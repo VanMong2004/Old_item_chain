@@ -1,10 +1,16 @@
+import React from "react";
+import "../assets/css/Layout.css";
+
 function Footer() {
   return (
     <footer className="footer">
-      <p>
-        Website mua bán đồ cũ nội bộ tích hợp xác thực giao dịch bằng Blockchain
-      </p>
-      <p>Môn học: Blockchain căn bản</p>
+      <div className="footer-container">
+        <p className="footer-text">
+          Website mua bán đồ cũ nội bộ •{" "}
+          <span className="highlight">Xác thực giao dịch bằng Blockchain</span>
+        </p>
+        <p className="footer-course">Môn học: Blockchain căn bản</p>
+      </div>
     </footer>
   );
 }

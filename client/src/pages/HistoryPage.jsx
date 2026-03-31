@@ -1,39 +1,104 @@
+import React, { useEffect, useState } from "react";
 import TransactionCard from "../components/TransactionCard";
-
-const mockTransactions = [
-  {
-    productName: "Laptop Dell cũ",
-    type: "deposit",
-    amount: 500000,
-    buyerWallet: "0xabc...111",
-    sellerWallet: "0xdef...222",
-    txHashLocal: "0xaaa111bbb222",
-    blockchainTxHash: "0xccc333ddd444",
-    verified: true,
-    createdAt: "30/03/2026 14:35",
-  },
-  {
-    productName: "Laptop Dell cũ",
-    type: "complete",
-    amount: 4000000,
-    buyerWallet: "0xabc...111",
-    sellerWallet: "0xdef...222",
-    txHashLocal: "0xeee555fff666",
-    blockchainTxHash: "0xggg777hhh888",
-    verified: true,
-    createdAt: "30/03/2026 15:10",
-  },
-];
+import { getAllTransactions } from "../services/transactionService";
+import "../assets/css/HistoryPage.css"; // Nhúng file CSS
 
 function HistoryPage() {
-  return (
-    <div className="page">
-      <h1>Lịch sử giao dịch</h1>
+  const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-      <div className="tx-list">
-        {mockTransactions.map((tx, index) => (
-          <TransactionCard key={index} tx={tx} />
-        ))}
+  const fetchTransactions = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const data = await getAllTransactions();
+      setTransactions(data);
+    } catch (err) {
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          "Không tải được lịch sử giao dịch.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
+
+  return (
+    <div className="oc-hist-page">
+      {/* Header trang lịch sử */}
+      <div className="oc-hist-header">
+        <h1 className="oc-hist-title">
+          <span className="oc-hist-icon">📜</span> Sổ Cái Giao Dịch
+        </h1>
+        <p className="oc-hist-subtitle">
+          Theo dõi toàn bộ hoạt động mua bán và bằng chứng xác thực trên
+          Blockchain.
+        </p>
+      </div>
+
+      <div className="oc-hist-content">
+        {/* Trạng thái: Đang tải */}
+        {loading && (
+          <div className="oc-hist-loading">
+            <div className="oc-hist-spinner"></div>
+            <p>Đang đồng bộ dữ liệu từ mạng lưới Blockchain...</p>
+          </div>
+        )}
+
+        {/* Trạng thái: Lỗi */}
+        {error && (
+          <div className="oc-hist-error">
+            <span className="oc-hist-error-icon">⚠️</span>
+            <p>{error}</p>
+            <button className="oc-hist-btn-retry" onClick={fetchTransactions}>
+              Thử lại
+            </button>
+          </div>
+        )}
+
+        {/* Trạng thái: Chưa có giao dịch */}
+        {!loading && !error && transactions.length === 0 && (
+          <div className="oc-hist-empty-state">
+            <span className="oc-hist-empty-icon">📭</span>
+            <h3>Chưa có giao dịch nào</h3>
+            <p>
+              Hệ thống chưa ghi nhận bất kỳ giao dịch mua bán hay đặt cọc nào.
+            </p>
+            <a href="/" className="oc-hist-btn-explore">
+              Khám phá sản phẩm ngay
+            </a>
+          </div>
+        )}
+
+        {/* Trạng thái: Danh sách giao dịch */}
+        {!loading && !error && transactions.length > 0 && (
+          <div className="oc-hist-grid">
+            {transactions.map((tx) => (
+              <TransactionCard
+                key={tx._id}
+                tx={{
+                  _id: tx._id,
+                  productName: tx.productId?.name || "Không rõ sản phẩm",
+                  type: tx.type,
+                  amount: tx.amount,
+                  buyerWallet: tx.buyerWallet,
+                  sellerWallet: tx.sellerWallet,
+                  txHashLocal: tx.txHashLocal,
+                  blockchainTxHash: tx.blockchainTxHash,
+                  verified: tx.verified,
+                  createdAt: new Date(tx.createdAt).toLocaleString(),
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

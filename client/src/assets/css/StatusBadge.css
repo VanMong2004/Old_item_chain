@@ -1,0 +1,42 @@
+/* =========================================
+   STATUS BADGE COMPONENT
+========================================= */
+.oc-status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px; /* Bo tròn dạng viên thuốc */
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px); /* Hiệu ứng kính mờ cho nền mượt mà hơn */
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Các trạng thái màu sắc (Dùng màu RGBA để hơi trong suốt) */
+
+/* Có sẵn (Màu Xanh lá) */
+.badge-success {
+  background-color: rgba(16, 185, 129, 0.9);
+  color: #ffffff;
+}
+
+/* Đã cọc (Màu Vàng cam) */
+.badge-warning {
+  background-color: rgba(245, 158, 11, 0.9);
+  color: #ffffff;
+}
+
+/* Đã bán (Màu Đỏ/Xám hồng) */
+.badge-danger {
+  background-color: rgba(239, 68, 68, 0.9);
+  color: #ffffff;
+}
+
+/* Mặc định */
+.badge-default {
+  background-color: rgba(100, 116, 139, 0.9);
+  color: #ffffff;
+}

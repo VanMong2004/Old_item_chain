@@ -1,0 +1,250 @@
+/* =========================================
+   HOME PAGE LAYOUT & TYPOGRAPHY
+========================================= */
+.home-page {
+  min-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem 1.5rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main, #1e293b);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title-icon {
+  font-size: 2.2rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted, #64748b);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* =========================================
+   TOOLBAR (Tìm kiếm & Bộ lọc)
+========================================= */
+.toolbar-container {
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.toolbar {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  gap: 0.5rem;
+}
+
+.search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 0 1rem;
+  transition: all 0.2s;
+}
+
+.search-box:focus-within {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px var(--primary-blue, #3b82f6);
+}
+
+.search-icon {
+  color: var(--text-muted, #64748b);
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0.8rem 0;
+  font-size: 1rem;
+  color: var(--text-main, #1e293b);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+.filter-box {
+  min-width: 200px;
+}
+
+.status-filter {
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 0.95rem;
+  color: var(--text-main, #1e293b);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+  appearance: none; /* Ẩn mũi tên mặc định trên một số trình duyệt */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.status-filter:focus-visible {
+  border-color: var(--primary-blue, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* =========================================
+   STATES (Loading, Error, Empty)
+========================================= */
+.status-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 1rem auto;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid var(--primary-blue, #3b82f6);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-state p {
+  color: var(--text-muted, #64748b);
+  font-weight: 500;
+}
+
+/* Error State */
+.error-state {
+  background-color: #fef2f2;
+  border: 1px dashed #f87171;
+  color: #b91c1c;
+}
+
+.error-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.retry-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.retry-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Empty State */
+.empty-state {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  color: var(--text-main, #1e293b);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--text-muted, #64748b);
+}
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+/* =========================================
+   KEYFRAMES
+========================================= */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .search-box {
+    padding: 0.2rem 1rem;
+  }
+}

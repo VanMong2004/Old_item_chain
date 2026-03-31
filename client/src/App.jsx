@@ -1,16 +1,16 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
-import HomePage from "./pages/HomePage";
+import Header from "./components/Header";
+import "./assets/css/index.css";
 import AddProductPage from "./pages/AddProductPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
 import HistoryPage from "./pages/HistoryPage";
+import HomePage from "./pages/HomePage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 import WalletPage from "./pages/WalletPage";
-
 function App() {
   return (
     <BrowserRouter>
-      <div className="app-shell">
+      <div className="app-layout">
         <Header />
         <main className="main-content">
           <Routes>

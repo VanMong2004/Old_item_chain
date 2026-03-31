@@ -1,19 +1,41 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import WalletButton from "./WalletButton";
+import "../assets/css/Layout.css"; 
+
 
 function Header() {
+
   return (
     <header className="header">
-      <div className="logo">OldChain Market</div>
+      <div className="header-container">
+        {/* Logo */}
+        <div className="logo">
+          <span className="logo-icon">🔗</span>
+          <span className="logo-text">OldChain Market</span>
+        </div>
 
-      <nav className="nav">
-        <Link to="/">Trang chủ</Link>
-        <Link to="/add-product">Đăng sản phẩm</Link>
-        <Link to="/history">Lịch sử</Link>
-        <Link to="/wallet">Ví của tôi</Link>
-      </nav>
+        {/* Navigation */}
+        <nav className="nav">
+          <Link to="/" className="nav-link">
+            Trang chủ
+          </Link>
+          <Link to="/add-product" className="nav-link">
+            Đăng sản phẩm
+          </Link>
+          <Link to="/history" className="nav-link">
+            Lịch sử
+          </Link>
+          <Link to="/wallet" className="nav-link">
+            Ví của tôi
+          </Link>
+        </nav>
 
-      <WalletButton />
+        {/* Wallet Container */}
+        <div className="wallet-container">
+          <WalletButton />
+        </div>
+      </div>
     </header>
   );
 }

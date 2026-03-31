@@ -1,0 +1,134 @@
+/* =========================================
+   WALLET BUTTON - TRẠNG THÁI CHƯA KẾT NỐI
+========================================= */
+.oc-btn-connect {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.oc-wallet-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.oc-btn-connect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.oc-btn-connect:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   WALLET BUTTON - TRẠNG THÁI ĐÃ KẾT NỐI
+========================================= */
+.oc-wallet-connected-group {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 4px; /* Padding nhỏ để bọc các thành phần bên trong */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.oc-wallet-connected-group:hover {
+  border-color: #cbd5e1;
+}
+
+.oc-wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.4rem 0.75rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Chấm xanh nhấp nháy báo hiệu đang Online/Connected */
+.oc-status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981; /* Xanh lá */
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+.oc-wallet-address {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* Nút Đổi Ví (Icon Swap) */
+.oc-btn-change {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  color: #64748b;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: all 0.2s ease;
+}
+
+.oc-btn-change svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.oc-btn-change:hover {
+  background-color: #e2e8f0;
+  color: #2563eb;
+}
+
+/* Hiệu ứng xoay nhẹ icon khi di chuột */
+.oc-btn-change:hover svg {
+  transform: rotate(180deg);
+}
+
+.oc-btn-change:focus-visible {
+  outline: 2px solid #3b82f6;
+  background-color: #e2e8f0;
+}
+
+/* =========================================
+   KEYFRAMES (Hiệu ứng)
+========================================= */
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}

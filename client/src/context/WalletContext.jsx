@@ -103,6 +103,12 @@ export function WalletProvider({ children }) {
     };
   }, []);
 
+  const logout = () => {
+    setAccount(null);
+    setSigner(null);
+    setIsConnected(false);
+  };
+
   return (
     <WalletContext.Provider
       value={{
@@ -116,6 +122,7 @@ export function WalletProvider({ children }) {
         connectWallet,
         changeWallet,
         refreshWallet,
+        logout,
       }}
     >
       {children}
