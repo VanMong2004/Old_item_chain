@@ -102,6 +102,7 @@ export function WalletProvider({ children }) {
       }
     };
   }, []);
+  
 
   const logout = () => {
     setAccount(null);

@@ -1,5 +1,16 @@
 import { BrowserProvider } from "ethers";
 
+function getReadableNetworkName(chainId, fallbackName) {
+  const map = {
+    1: "Ethereum Mainnet",
+    11155111: "Sepolia",
+    // thay bằng chainId thật của Validium bạn đang dùng
+    567: "Validium Network",
+  };
+
+  return map[Number(chainId)] || fallbackName || "Unknown Network";
+}
+
 export async function getWalletData() {
   if (!window.ethereum) {
     throw new Error("MetaMask chưa được cài.");
@@ -16,7 +27,7 @@ export async function getWalletData() {
     signer,
     account: accounts[0],
     chainId: Number(network.chainId),
-    networkName: network.name,
+    networkName: getReadableNetworkName(network.chainId, networkName),
   };
 }
 
