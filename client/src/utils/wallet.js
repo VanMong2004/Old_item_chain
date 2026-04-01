@@ -27,7 +27,7 @@ export async function getWalletData() {
     signer,
     account: accounts[0],
     chainId: Number(network.chainId),
-    networkName: getReadableNetworkName(network.chainId, networkName),
+    networkName: getReadableNetworkName(network.chainId, network.name),
   };
 }
 
